@@ -1,0 +1,13 @@
+<!-- app/views/professors/assignments/index.html.erb -->
+<h1>Assign Theses to Review</h1>
+
+<ul>
+  <% @theses.each do |thesis| %>
+    <li>
+      <%= link_to thesis.title, professors_assignment_path(thesis) %>
+      <% unless thesis.professor %>
+        <%= link_to 'Assign to Review', assign_to_review_professors_assignment_path(thesis), method: :post %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

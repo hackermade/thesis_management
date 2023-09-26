@@ -1,0 +1,44 @@
+<!-- app/views/students/theses/new.html.erb -->
+<h1>New Thesis Submission</h1>
+
+<%= form_with(model: @thesis, url: students_theses_path, method: :post, multipart: true) do |form| %>
+  <% if @thesis.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@thesis.errors.count, "error") %> prohibited this thesis from being saved:</h2>
+      <ul>
+        <% @thesis.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_date %>
+    <%= form.date_field :start_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :implementation_languages %>
+    <%= form.text_field :implementation_languages %>
+  </div>
+
+  <div class="field">
+    <%= form.label :technologies %>
+    <%= form.text_field :technologies %>
+  </div>
+
+  <div class="field">
+    <%= form.label :zip_file, 'Upload ZIP File' %>
+    <%= form.file_field :zip_file %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Submit' %>
+  </div>
+<% end %>

@@ -1,0 +1,58 @@
+<!-- app/views/students/theses/new.html.erb -->
+<div class="main-div center">
+<h1>New Thesis Submission</h1>
+
+<%= form_with(model: @thesis, url: students_theses_path, method: :post, multipart: true) do |form| %>
+  <% if @thesis.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@thesis.errors.count, "error") %> prohibited this thesis from being saved:</h2>
+      <ul>
+        <% @thesis.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title, class: 'form-label'  %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_date,  class: 'form-label'  %>
+    <%= form.date_field :start_date, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :implementation_languages,  class: 'form-label'  %>
+    <%= form.text_field :implementation_languages, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :technologies,  class: 'form-label'  %>
+    <%= form.text_field :technologies, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :file, 'Upload ZIP File',  class: 'form-label'  %>
+    <%= form.file_field :file, class: 'form-control' %>
+  </div>
+<br>
+  <div class="actions">
+    <%= form.submit 'Submit',  class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+</div>
+
+
+<style type="text/css">
+  .main-div{
+    position: absolute;
+    top: 20%;
+    left: 35%;
+
+
+  }
+</style>

@@ -1,0 +1,16 @@
+<!-- app/views/professors/_form.html.erb -->
+<%= form_for thesis, url: professor_thesis_path(thesis), method: :patch do |f| %>
+  <div class="field">
+    <%= f.label :grades_data %>
+    <%= f.text_field :grades_data %>
+  </div>
+
+  <div class="field">
+    <%= f.label :meeting_dates_data %>
+    <%= f.text_field :meeting_dates_data %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Update Grades and Meeting Date' %>
+  </div>
+<% end %>

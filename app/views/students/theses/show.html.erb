@@ -1,0 +1,24 @@
+<!-- app/views/students/theses/show.html.erb -->
+<h1>Thesis Details</h1>
+
+<p><strong>Title:</strong> <%= @thesis.title %></p>
+<p><strong>Start Date:</strong> <%= @thesis.start_date %></p>
+<p><strong>Implementation Languages:</strong> <%= @thesis.implementation_languages %></p>
+<p><strong>Technologies:</strong> <%= @thesis.technologies %></p>
+
+<!-- Display Grades -->
+<h2>Grades:</h2>
+<% if @thesis.grades == nil %>
+  <p>Pending</p>
+<% else %>
+  <p><%= @thesis.grades %></p>
+<% end %>
+
+<!-- Display Meeting Date -->
+<h2>Meeting Date:</h2>
+<% if @thesis.meeting_date == nil %>
+  <p>Pending</p>
+<% else %>
+  <!-- Display actual meeting date -->
+  <p><%= @thesis.meeting_date %></p>
+<% end %>

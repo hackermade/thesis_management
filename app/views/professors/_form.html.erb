@@ -1,0 +1,17 @@
+<%= form_with(model: @thesis, url: update_thesis_professor_path(@thesis), method: :patch) do |form| %>
+  <div class="field">
+    <%= form.label :grades, class: 'form-label' %>
+    <%= form.text_field :grades, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :meeting_date, class: 'form-label' %>
+    <%= form.date_field :meeting_date, class: 'form-control' %>
+  </div>
+<br>
+  <div class="actions">
+    <%= form.submit 'Update Thesis', class: 'btn btn-primary' %>
+    <%= link_to 'Back to Thesis', professors_index_path, class: 'btn btn-warning' %>
+  </div>
+
+<% end %>

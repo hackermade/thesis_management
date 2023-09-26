@@ -1,0 +1,48 @@
+<br>
+<div class="main-div center">
+
+<!-- app/views/students/_form.html.erb -->
+<%= form_for thesis, url: create_thesis_student_path, method: :post do |f| %>
+  <div class="field">
+    <%= f.label :title, class: 'form-label' %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_date, class: 'form-label' %>
+    <%= f.date_field :start_date, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :implementation_languages, class: 'form-label' %>
+    <%= f.text_field :implementation_languages, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :technologies, class: 'form-label' %>
+    <%= f.text_field :technologies, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :file, 'Upload Zip File', class: 'form-label' %>
+    <%= f.file_field :file, class: 'form-control'  %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Submit Thesis', class: 'btn btn-primary'  %>
+  </div>
+<% end %>
+
+</div>
+
+
+
+<style type="text/css">
+  .main-div{
+    position: absolute;
+    top: 25%;
+    left: 35%;
+
+
+  }
+</style>

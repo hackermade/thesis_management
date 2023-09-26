@@ -1,0 +1,46 @@
+ <div class="main-div center">
+  <!-- app/views/professors/show.html.erb -->
+<h1>Thesis for Grading</h1>
+
+<p><strong>Title:</strong> <%= @thesis.title %></p>
+<p><strong>Start Date:</strong> <%= @thesis.start_date %></p>
+<p><strong>Implementation Languages:</strong> <%= @thesis.implementation_languages %></p>
+<p><strong>Technologies:</strong> <%= @thesis.technologies %></p>
+
+
+<% if @thesis.professor == current_professor %>
+
+
+  
+
+  <div class="field">
+    <%= link_to 'Download Thesis', rails_blob_path(@thesis.file, disposition: 'attachment'), class: 'btn btn-primary' %>
+  <%= link_to 'Edit Grades and Meeting Date', edit_professor_path(@thesis), class: 'btn btn-warning' %>
+    
+  </div>
+
+
+<% elsif @thesis.professor != nil %>
+
+  <p>This thesis is currently assigned to <%= @thesis.professor.email %>.</p>
+  <div class="field">
+    <%= link_to 'Download Thesis', rails_blob_path(@thesis.file, disposition: 'attachment'), class: 'btn btn-primary' %>
+  </div>
+  <% else %>
+  <div class="field">
+    <%= link_to 'Download Thesis', rails_blob_path(@thesis.file, disposition: 'attachment'), class: 'btn btn-primary' %>
+  </div>
+  
+<% end %>
+
+</div>
+
+<style type="text/css">
+  .main-div{
+    position: absolute;
+    top: 15%;
+    left: 35%;
+
+
+  }
+</style>

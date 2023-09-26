@@ -1,0 +1,33 @@
+<!-- app/views/professors/reviews/show.html.erb -->
+<h1>Thesis Review</h1>
+
+<h2>Title: <%= @thesis.title %></h2>
+
+<% if @thesis.professor == current_professor %>
+  <h3>Grades and Meeting Date</h3>
+
+  <%= form_with(model: @thesis, url: professors_review_path(@thesis), method: :patch) do |form| %>
+    <div class="field">
+      <%= form.label :grade %>
+      <%= form.select :grade, ['A', 'B', 'C', 'D', 'F'] %>
+    </div>
+
+    <div class="field">
+      <%= form.label :meeting_date %>
+      <%= form.date_field :meeting_date %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit 'Submit Review' %>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= link_to 'Download Thesis', rails_blob_path(@thesis.zip_file, disposition: 'attachment'), class: 'btn btn-primary' %>
+  </div>
+<% else %>
+  <p>This thesis is currently assigned to <%= @thesis.professor.name %>.</p>
+  <div class="field">
+    <%= link_to 'Download Thesis', rails_blob_path(@thesis.zip_file, disposition: 'attachment'), class: 'btn btn-primary' %>
+  </div>
+<% end %>
