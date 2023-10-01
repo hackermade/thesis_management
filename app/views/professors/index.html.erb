@@ -1,41 +1,45 @@
- <div class="main-div center">
-<!-- app/views/professors/index.html.erb -->
-<h1>Theses for Grading</h1>
+<div class="main-div center">
+
+<center><h1>Theses for Grading</h1></center>
 
 <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Thesis Name</th>
-      <th scope="col">Grades</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @theses.each do |thesis| %>
-    <tr>
-      <th scope="row"><%= thesis.id %></th>
-      <td><%= thesis.title %></td>
-      <td>
-        <% if thesis.grades == nil %>
-          Pending
-        <% else %>
-          completed
-          <% end %>
-      </td>
-      <td>
-      <% if thesis.professor == nil %>
-      <%= link_to 'Assign to Yourself', assign_thesis_professor_path(thesis), method: :post, class: 'btn btn-warning' %>
-      <% elsif thesis.professor == current_professor %>
-      <%= link_to 'Edit Grades', professors_show_path(id: thesis.id), class: 'btn btn-success' %>
-      <% else %>
-      <%= link_to 'Show Thesis', professors_show_path(id: thesis.id), class: 'btn btn-info' %>
+<thead>
+<tr>
+<th scope="col">#</th>
+<th scope="col">Thesis Name</th>
+<th scope="col">Grades</th>
+<th scope="col">Student Mail</th>
+<th scope="col">Actions</th>
+</tr>
+</thead>
+<tbody>
+<% @theses.each do |thesis| %>
+<tr>
+<th scope="row"><%= thesis.id %></th>
+<td><%= thesis.title %></td>
+<td>
+<% if thesis.grades == nil %>
+Pending
+<% else %>
+completed
+<% end %>
+</td>
+<td>
+<%= thesis.student.email %>
+</td>
+<td>
+<% if thesis.professor == nil %>
+<%= link_to 'Assign to Yourself', assign_thesis_professor_path(thesis), method: :post, class: 'btn btn-warning' %>
+<% elsif thesis.professor == current_professor %>
+<%= link_to 'Edit Grades', professors_show_path(id: thesis.id), class: 'btn btn-success' %>
+<% else %>
+<%= link_to 'Show Thesis', professors_show_path(id: thesis.id), class: 'btn btn-info' %>
 
-      <% end %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
+<% end %>
+</td>
+</tr>
+<% end %>
+</tbody>
 </table>
 
 
@@ -43,11 +47,12 @@
 </div>
 
 <style type="text/css">
-  .main-div{
-    position: absolute;
-    top: 15%;
-    left: 35%;
+.main-div{
+position: absolute;
+top: 15%;
+left: 25%;
 
 
-  }
+}
 </style>
+
